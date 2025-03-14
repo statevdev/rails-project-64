@@ -1,5 +1,6 @@
 setup:
 	bundle
+	bin/rails assets:precompile
 start:
 	bin/rails s
 lint:
