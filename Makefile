@@ -1,6 +1,7 @@
 setup:
 	bundle
 	bin/rails assets:precompile
+	bin/rails db:migrate
 start:
 	bin/rails s
 lint:
