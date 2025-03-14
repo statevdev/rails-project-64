@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title
+      | RailsProject64
+    meta[name="viewport" content="width=device-width,initial-scale=1"]
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag "application", "data-turbo-track": "reload"
+    = javascript_include_tag "application", "data-turbo-track": "reload", type: "module"
+    = Sentry.get_trace_propagation_meta.html_safe
+  body
+    = render 'layouts/shared/nav'
+    p.notice
+      = notice
+    p.alert
+      = alert
+    = yield
