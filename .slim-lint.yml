@@ -1,0 +1,7 @@
+linters:
+  LineLength:
+    enabled: false
+  TrailingWhitespace:
+    enabled: false
+  RuboCop:
+    enabled: false
