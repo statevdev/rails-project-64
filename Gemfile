@@ -25,6 +25,8 @@ gem 'stimulus-rails'
 
 gem 'slim-rails'
 
+gem 'simple_form'
+
 # Bundle and process CSS [https://github.com/rails/cssbundling-rails]
 gem 'cssbundling-rails'
 
