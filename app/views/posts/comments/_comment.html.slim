@@ -1,0 +1,11 @@
+.comment style="margin-left: #{comment.depth * 20}px;"
+  p
+    strong = comment.creator.email
+    | #{comment.content}
+  p = time_ago_in_words(comment.created_at) + " назад"
+
+  = link_to 'Ответить', post_path(@post, reply_to: comment.id), class: 'reply-link'
+
+  - if comment.children.any?
+    .replies
+      = render partial: 'posts/comments/comment', collection: comment.children.order(:created_at), as: :comment

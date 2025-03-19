@@ -30,3 +30,5 @@
 en:
   posts:
     created: 'Post successfully created!'
+  comments:
+    created: 'Comment successfully created!'
