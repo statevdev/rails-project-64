@@ -1,11 +1,6 @@
-
-div id="#{dom_id post}"
-  p
-    strong Title:
-    =< post.title
-  p
-    strong Body:
-    =< post.body
-  p
-    strong Creator:
-    =< post.creator.email
+h3 
+  =< link_to post.title, post, style: "text-decoration: none; color: black;"
+p
+  =< post.body
+small
+  =< post.creator.email

@@ -1,6 +1,9 @@
 h1 = @post.title
 p = @post.body
 
+#likes
+  = render partial: 'posts/likes/like'
+
 h2 Комментарии
 #comments
   = render partial: 'posts/comments/comment', collection: @comment_collection

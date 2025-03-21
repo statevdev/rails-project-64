@@ -2,8 +2,6 @@ p style="color: green" = notice
 
 h1 Collective Blog
 
-#posts
-  - @posts.each do |post|
-    == render post
-    p
-      = link_to "Show this post", post
+- @posts.each do |post|
+  hr
+  == render post
