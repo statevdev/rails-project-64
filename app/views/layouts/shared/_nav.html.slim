@@ -1,17 +1,13 @@
 nav.navbar.fixed-top.bg-body-tertiary
-  .container-fluid
+  .container
+    h3
+      =< link_to 'collective blog', root_path
 
-  a[href='/']
-    | Главная
-  a.navbar-brand[href='#']
-    div
+    div style='display: flex; gap: 20px;'
       - if user_signed_in?
         = current_user.email
-        |  |
         = link_to 'Новый пост', new_post_path
-        |  |  
         = link_to 'Выйти', destroy_user_session_path, data: { turbo_method: 'delete' }
       - else
         = link_to 'Войти', new_user_session_path
-        |  | 
         = link_to 'Регистрация', new_user_registration_path

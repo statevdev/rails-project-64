@@ -1,12 +1,9 @@
-p style='color: green' = notice
-
-h1 Collective Blog
-
-- @posts.each do |post|
-  hr
-  h3
-    =< link_to post.title, post, style: 'text-decoration: none; color: black;'
-  p
-    =< post.body
-  small
-    =< post.creator.email
+.container.content style='margin-top: 100px;'
+  - @posts.each do |post|
+    .border style='border: 1px solid #ccc; border-radius: 10px; padding: 10px; margin-bottom: 20px;'
+      h3
+        =< link_to post.title, post, style: 'text-decoration: none; color: black;'
+      p
+        =< simple_format(post.body)
+      small
+        =< post.creator.email

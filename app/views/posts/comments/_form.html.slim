@@ -1,3 +1,4 @@
-= simple_form_for PostComment.new, url: post_comments_path(@post), local: true do |f|
-  = f.input :content, as: :text, label: false
-  = f.button :submit, 'Добавить комментарий', class: 'btn btn-primary'
+div style='margin-top: 20px;'
+  = simple_form_for PostComment.new, url: post_comments_path(@post), local: true do |f|
+    = f.input :content, as: :text, label: false
+    = f.button :submit, 'Добавить комментарий', class: 'btn btn-primary'

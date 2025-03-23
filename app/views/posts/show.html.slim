@@ -1,6 +1,8 @@
-h1 = @post.title
-p = @post.body
+.container.content style='margin-top: 100px;'
+  .border style='border: 1px solid #ccc; border-radius: 10px; padding: 10px; margin-bottom: 20px;'
+    h3 = @post.title
+    p = simple_format(@post.body)
 
-= render 'posts/likes/like'
-= render 'posts/comments/form' if user_signed_in?
-= render partial: 'posts/comments/comment', collection: @comments.filter { |comment| comment.is_root? }
+    = render 'posts/likes/like'
+    = render 'posts/comments/form' if user_signed_in?
+    = render partial: 'posts/comments/comment', collection: @comments.filter { |comment| comment.is_root? }
