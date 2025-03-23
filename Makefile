@@ -2,7 +2,7 @@ setup:
 	bundle
 	bin/rails assets:precompile
 	bin/rails db:migrate
-	bin/rails db:fixtures:load
+	bin/rails db:drop db:create db:migrate db:fixtures:load
 start:
 	bin/rails s
 lint:
