@@ -1,0 +1,7 @@
+- parent_comment = @post.comments.find(params[:reply_to])
+- children_comment = PostComment.new(post_id: @post.id, parent_id: parent_comment.id)
+
+p = simple_form_for(children_comment, url: post_comments_path(@post), local: true) do |f|
+    = f.hidden_field :parent_id, value: parent_comment.id
+    = f.input :content, as: :text, label: false
+    = f.button :submit, 'Отправить', class: 'btn btn-primary'

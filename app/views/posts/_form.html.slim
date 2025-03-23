@@ -1,12 +1,9 @@
-
 = simple_form_for(@post) do |f|
   = f.error_notification
   = f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present?
 
-  .form-inputs
-    = f.input :title
-    = f.input :category_id, collection: @categories
-    = f.input :body
+  = f.input :title
+  = f.association :category
+  = f.input :body
 
-  .form-actions
-    = f.button :submit
+  = f.button :submit, 'Добавить пост', class: 'btn btn-primary'

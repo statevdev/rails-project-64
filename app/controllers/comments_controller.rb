@@ -6,11 +6,9 @@ class CommentsController < ApplicationController
     @comment.creator = current_user
     @comment.parent_id = params[:parent_id] if params[:parent_id].present?
 
-    if @comment.save
-      redirect_to @post, notice: t('comments.created')
-    else
-      render 'posts/show', status: :unprocessable_entity
-    end
+    flash[:success] = t('comments.created') if @comment.save
+
+    redirect_to @post
   end
 
   private

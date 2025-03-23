@@ -1,12 +1,12 @@
 one:
-  title: "First Post"
-  body: "This is a test post"
+  title: <%= Faker::Lorem.sentence %>
+  body: <%= Faker::Lorem.paragraphs %>
   category: one
   creator: user_one
 
 two:
-  title: "Second Post"
-  body: "Another test post"
+  title: <%= Faker::Lorem.sentence %>
+  body: <%= Faker::Lorem.paragraphs %>
   category: two
   creator: user_two
 

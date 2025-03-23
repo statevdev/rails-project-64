@@ -1,18 +1,26 @@
-require "test_helper"
+require 'test_helper'
 
 class LikesControllerTest < ActionDispatch::IntegrationTest
-  test "should get new" do
-    get likes_new_url
-    assert_response :success
+  setup do
+    @user = users(:user_one)
   end
 
-  test "should get create" do
-    get likes_create_url
-    assert_response :success
+  test '#create' do
+    sign_in @user
+    @post = posts(:two)
+
+    assert_difference('PostLike.count', 1) do
+      post post_likes_path(@post), params: { user_id: @user.id }
+    end
   end
 
-  test "should get destroy" do
-    get likes_destroy_url
-    assert_response :success
+  test '#destroy' do
+    sign_in @user
+    @post = posts(:one)
+    @like = post_likes(:one)
+
+    assert_difference('PostLike.count', -1) do
+      delete post_like_path(@post, @like), params: { user_id: @user.id }
+    end
   end
 end

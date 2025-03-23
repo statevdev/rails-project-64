@@ -1,5 +1,8 @@
 one:
-  name: "Category 1"
+  name: 'Music'
 
 two:
-  name: "Category 2"
+  name: 'IT'
+
+three:
+  name: 'Cinema'

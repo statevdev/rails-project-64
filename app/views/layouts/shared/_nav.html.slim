@@ -1,17 +1,17 @@
 nav.navbar.fixed-top.bg-body-tertiary
   .container-fluid
 
-  a[href="/"]
+  a[href='/']
     | Главная
-  a.navbar-brand[href="#"]
+  a.navbar-brand[href='#']
     div
       - if user_signed_in?
         = current_user.email
         |  |
-        = link_to "Новый пост", new_post_path
+        = link_to 'Новый пост', new_post_path
         |  |  
-        = link_to "Выйти", destroy_user_session_path, data: { turbo_method: "delete" }
+        = link_to 'Выйти', destroy_user_session_path, data: { turbo_method: 'delete' }
       - else
-        = link_to "Войти", new_user_session_path
-        |  |
-        = link_to "Регистрация", new_user_registration_path
+        = link_to 'Войти', new_user_session_path
+        |  | 
+        = link_to 'Регистрация', new_user_registration_path

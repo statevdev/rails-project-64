@@ -1,29 +1,13 @@
 h1 = @post.title
 p = @post.body
 
-#likes
-  = render partial: 'posts/likes/like'
-
-h2 Комментарии
-#comments
-  = render partial: 'posts/comments/comment', collection: @comment_collection
+= render 'posts/likes/like'
+= render 'posts/comments/form' if user_signed_in?
+= render partial: 'posts/comments/comment', collection: @comments.filter { |comment| comment.is_root? }
 
 
-= simple_form_for PostComment.new, url: post_comments_path(post_id: @post.id), local: true do |f|
-  .form-inputs
-    = f.input :content, as: :text, input_html: { rows: 3 }
-  .form-actions
-    = f.button :submit, "Добавить комментарий"
 
-- if params[:reply_to].present?
-  - reply_comment = @post.comments.find(params[:reply_to])
+
   
-  h3 Ответить на комментарий
 
-  = simple_form_for PostComment.new(post_id: @post.id, parent_id: reply_comment.id), url: post_comments_path(post_id: @post.id), local: true do |f|
-    = f.hidden_field :parent_id, value: reply_comment.id
-    .form-inputs
-      = f.input :content, as: :text, input_html: { rows: 3 }
-    .form-actions
-      = f.button :submit, "Ответить"
 

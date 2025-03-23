@@ -1,7 +1,12 @@
-p style="color: green" = notice
+p style='color: green' = notice
 
 h1 Collective Blog
 
 - @posts.each do |post|
   hr
-  == render post
+  h3
+    =< link_to post.title, post, style: 'text-decoration: none; color: black;'
+  p
+    =< post.body
+  small
+    =< post.creator.email

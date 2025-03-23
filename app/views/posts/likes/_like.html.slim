@@ -1,7 +1,8 @@
-= @post.likes.count
+= @likes.count
 - if user_signed_in?
-  - if @post.likes.exists?(user_id: current_user.id)
-    =< link_to '❤️', post_like_path(@post, @post.likes.find_by(user_id: current_user.id)), data: { 'turbo-method' => :delete }, style: "text-decoration: none;"
+  - like = @likes.find_by(user_id: current_user.id)
+  - if @likes.exists?(user_id: current_user.id)
+    =< link_to '❤️', post_like_path(@post, like), data: { 'turbo-method' => :delete }, style: "text-decoration: none;"
   - else
     =< link_to '🤍', post_likes_path(@post), data: { 'turbo-method' => :post }, style: "text-decoration: none;"
 - else

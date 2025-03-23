@@ -11,8 +11,10 @@ html
     = Sentry.get_trace_propagation_meta.html_safe
   body
     = render 'layouts/shared/nav'
-    p.notice
-      = notice
-    p.alert
-      = alert
+
+    .flash-messages.mt-5
+      - flash.each do |type, message|
+        - alert_class = { notice: 'alert-success', alert: 'alert-danger' }[type.to_sym] || 'alert-info'
+        .alert class=alert_class = message
+
     = yield

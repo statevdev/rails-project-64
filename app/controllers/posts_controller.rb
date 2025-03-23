@@ -7,9 +7,8 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @comments = @post.comments.order(:created_at)
-    @comment_collection = @post.comments.filter { |comment| comment.is_root? && comment.id }
-    @parent_comment = PostComment.find_by(id: params[:parent_id])
+    @comments = @post.comments.order(created_at: :desc)
+    @likes = @post.likes
   end
 
   def new
