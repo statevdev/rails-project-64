@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @post.comments.build(comment_params)
-    @comment.creator = current_user
+    @comment.user = current_user
     @comment.parent_id = params[:parent_id] if params[:parent_id].present?
 
     flash[:success] = t('comments.created') if @comment.save
