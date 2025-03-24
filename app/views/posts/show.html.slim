@@ -5,4 +5,4 @@
 
     = render 'posts/likes/like'
     = render 'posts/comments/form' if user_signed_in?
-    = render partial: 'posts/comments/comment', collection: @comments.filter { |comment| comment.is_root? }
+    = render partial: 'posts/comments/comment', collection: @comments.filter(&:is_root?)

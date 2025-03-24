@@ -2,7 +2,7 @@ div style='margin-left: #{comment.depth * 20}px;'
   .border style='border: 1px solid #ccc; border-radius: 10px; padding: 10px; margin-top: 20px;'
     p = comment.user.email
     p = comment.content
-    p = time_ago_in_words(comment.created_at) + ' ago'
+    p = "#{time_ago_in_words(comment.created_at)} ago"
 
     - if user_signed_in?
       - if params[:reply_to].to_i == comment.id

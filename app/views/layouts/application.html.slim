@@ -8,13 +8,17 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', 'data-turbo-track': 'reload'
     = javascript_include_tag 'application', 'data-turbo-track': 'reload', type: 'module'
+    - # rubocop:disable Rails/OutputSafety
     = Sentry.get_trace_propagation_meta.html_safe
+    - # rubocop:enable Rails/OutputSafety
   body
     = render 'layouts/shared/nav'
 
+    - # rubocop:disable Performance/CollectionLiteralInLoop
     .flash-messages.mt-5
       - flash.each do |type, message|
         - alert_class = { notice: 'alert-success', alert: 'alert-danger' }[type.to_sym] || 'alert-info'
         .alert class=alert_class = message
+    - # rubocop:enable Performance/CollectionLiteralInLoop
 
     = yield
