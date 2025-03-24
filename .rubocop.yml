@@ -50,4 +50,4 @@ Style/IfUnlessModifier:
   Enabled: false
 
 Style/FrozenStringLiteralComment:
-  Enabled: false
+  Enabled: true
