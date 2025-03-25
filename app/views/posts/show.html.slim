@@ -5,7 +5,7 @@
         = link_to t('all_posts'), posts_path
       li.breadcrumb-item.active
         = @post.category.name
-    
+
     h1 = @post.title
     p = simple_format(@post.body)
 

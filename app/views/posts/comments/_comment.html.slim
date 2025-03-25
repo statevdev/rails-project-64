@@ -4,7 +4,7 @@
     small.text-muted = "#{time_ago_in_words(comment.created_at)} #{t('comments.created_at')}"
   .card-body
     p = comment.content
-    
+
     - if user_signed_in?
       - if params[:reply_to].to_i == comment.id
         = link_to t('reply'), post_path(@post), class: 'd-block'
@@ -14,4 +14,3 @@
 
 - if comment.children.any?
   = render partial: 'posts/comments/comment', collection: comment.children.order(:created_at), as: :comment
-
