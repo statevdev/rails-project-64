@@ -1,15 +1,17 @@
-div style='margin-left: #{comment.depth * 20}px;'
-  .border style='border: 1px solid #ccc; border-radius: 10px; padding: 10px; margin-top: 20px;'
-    p = comment.user.email
+.card.mt-3 style="margin-left: #{comment.depth * 20}px;"
+  .card-header.d-flex.justify-content-between
+    = comment.user.email
+    small.text-muted = "#{time_ago_in_words(comment.created_at)} ago"
+  .card-body
     p = comment.content
-    p = "#{time_ago_in_words(comment.created_at)} ago"
-
+    
     - if user_signed_in?
       - if params[:reply_to].to_i == comment.id
-        = link_to 'Ответить', post_path(@post)
+        = link_to 'Ответить', post_path(@post), class: 'd-block'
         = render partial: 'posts/comments/reply_form'
       - else
-        = link_to 'Ответить', post_path(@post, reply_to: comment.id)
+        = link_to 'Ответить', post_path(@post, reply_to: comment.id), class: 'd-block'
 
 - if comment.children.any?
   = render partial: 'posts/comments/comment', collection: comment.children.order(:created_at), as: :comment
+
