@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.parent_id = params[:parent_id] if params[:parent_id].present?
 
-    flash[:success] = t('comments.created') if @comment.save
+    flash[:notice] = t('comments.created') if @comment.save
 
     redirect_to @post
   end

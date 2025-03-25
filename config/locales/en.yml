@@ -30,5 +30,18 @@
 en:
   posts:
     created: 'Post successfully created!'
+    all_posts: 'All posts'
+    new_post: 'New post'
   comments:
     created: 'Comment successfully created!'
+    created_at: 'ago'
+    links:
+      reply: 'Reply'
+  likes:
+    like: '❤️'
+    without_like: '🤍'
+  shared:
+    _nav:
+      exit: 'Exit'
+      sign_in: 'Sign in'
+      sign_up: 'Sign up'
