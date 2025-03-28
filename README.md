@@ -4,19 +4,19 @@
 # Collective Blog
 This application is a simple blog where users can register, write posts on various topics, to like and comment on them.
 
-### Application link:
+## Application link:
 https://rails-project-64-o0g0.onrender.com/
 
-### Installation
+## Installation
 Requires Ruby=3.2.2
 
-Execute:
+Execute this for setup:
 
 ```bash
 make setup
 ```
 
-### Usage
+## Usage
 
 To start the local server on 3000 port, run:
 
