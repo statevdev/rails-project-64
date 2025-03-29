@@ -1,0 +1,35 @@
+ru:
+  app: 'collective blog'
+  posts:
+    created: 'Добавлен новый пост!'
+    show: 
+      all: 'Все посты'
+    new: 
+      new: 'Новый пост'
+    comments:
+      created: 'Добавлен новый комментарий!'
+      comment:
+        reply: 'Ответить'
+        created_at: 'назад'
+    categories:
+      Cinema: 'Кино'
+      Music: 'Музыка'
+    likes:
+      like:
+        like: '❤️'
+        without_like: '🤍'
+  shared:
+    _nav:
+      new_post: 'Новый пост'
+      exit: 'Выход'
+      sign_in: 'Войти'
+      sign_up: 'Зарегистрироваться'
+  activerecord:
+    attributes:
+      user:
+        password: 'Пароль'
+        password_confirmation: 'Подтверждение пароля'
+      post:
+        title: 'Название'
+        category: 'Категория'
+        body: 'Текст'

@@ -2,8 +2,8 @@
 - if user_signed_in?
   - like = @likes.find_by(user_id: current_user.id)
   - if @likes.exists?(user_id: current_user.id)
-    =< link_to t('likes.like'), post_like_path(@post, like), data: { 'turbo-method' => :delete }, style: 'text-decoration: none;'
+    =< link_to t('.like'), post_like_path(@post, like), data: { 'turbo-method' => :delete }, style: 'text-decoration: none;'
   - else
-    =< link_to t('likes.without_like'), post_likes_path(@post), data: { 'turbo-method' => :post }, style: 'text-decoration: none;'
+    =< link_to t('.without_like'), post_likes_path(@post), data: { 'turbo-method' => :post }, style: 'text-decoration: none;'
 - else
-  =< t('likes.without_like')
+  =< t('.without_like')

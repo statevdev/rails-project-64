@@ -1,47 +1,27 @@
-# Files in the config/locales directory are used for internationalization and
-# are automatically loaded by Rails. If you want to use locales other than
-# English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# To learn more about the API, please read the Rails Internationalization guide
-# at https://guides.rubyonrails.org/i18n.html.
-#
-# Be aware that YAML interprets the following case-insensitive strings as
-# booleans: `true`, `false`, `on`, `off`, `yes`, `no`. Therefore, these strings
-# must be quoted to be interpreted as strings. For example:
-#
-#     en:
-#       "yes": yup
-#       enabled: "ON"
-
 en:
+  app: 'collective blog'
   posts:
     created: 'Post successfully created!'
-    all_posts: 'All posts'
-    new_post: 'New post'
-  comments:
-    created: 'Comment successfully created!'
-    created_at: 'ago'
-    links:
-      reply: 'Reply'
-  likes:
-    like: '❤️'
-    without_like: '🤍'
+    show:
+      all: 'All posts'
+    new:
+      new: 'New post'
+    comments:
+      created: 'Comment successfully created!'
+      comment:
+        reply: 'Reply'
+        created_at: 'ago'      
+    likes:
+      like:
+        like: '❤️'
+        without_like: '🤍'
   shared:
     _nav:
+      new_post: 'New post'
       exit: 'Exit'
       sign_in: 'Sign in'
       sign_up: 'Sign up'
+  activerecord:
+    attributes:
+      user:
+        password: 'Password'

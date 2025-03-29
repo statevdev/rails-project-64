@@ -6,8 +6,8 @@ nav.navbar.fixed-top.bg-body-tertiary
     div style='display: flex; gap: 20px;'
       - if user_signed_in?
         = current_user.email
-        = link_to t('new_post'), new_post_path
-        = link_to t('exit'), destroy_user_session_path, data: { turbo_method: 'delete' }
+        = link_to t('shared._nav.new_post'), new_post_path
+        = link_to t('shared._nav.exit'), destroy_user_session_path, data: { turbo_method: 'delete' }
       - else
-        = link_to t('sign_in'), new_user_session_path
-        = link_to t('sign_up'), new_user_registration_path
+        = link_to t('shared._nav.sign_in'), new_user_session_path
+        = link_to t('shared._nav.sign_up'), new_user_registration_path
