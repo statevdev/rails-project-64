@@ -1,4 +1,4 @@
-= @likes.count
+= @post.likes_count
 - if user_signed_in?
   - like = @likes.find_by(user_id: current_user.id)
   - if @likes.exists?(user_id: current_user.id)
