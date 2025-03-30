@@ -5,13 +5,12 @@ require 'test_helper'
 class PostsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @post = posts(:one)
-    @locale = { locale: I18n.default_locale }
   end
 
   test 'should get new' do
     sign_in users(:user_one)
 
-    get new_post_path(@locale)
+    get new_post_path
     assert_response :success
   end
 
@@ -19,7 +18,7 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
     sign_in users(:user_one)
 
     assert_difference('Post.count') do
-      post posts_path(@locale), params: {
+      post posts_path, params: {
         post: {
           title: @post.title,
           body: @post.body,
@@ -29,16 +28,16 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
       }
     end
 
-    assert_redirected_to post_path(Post.last, @locale)
+    assert_redirected_to post_path(Post.last)
   end
 
   test 'should get index' do
-    get posts_path(@locale)
+    get posts_path
     assert_response :success
   end
 
   test 'should show post' do
-    get post_path(@post, @locale)
+    get post_path(@post)
     assert_response :success
   end
 end

@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
   def set_locale
     if Rails.env.production?
       set_locale_from_headers
-    else
+    elsif Rails.env.development?
       set_locale_from_params
     end
   end
