@@ -5,6 +5,7 @@ require 'test_helper'
 class LikesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:user_one)
+    @locale = { locale: I18n.default_locale }
   end
 
   test '#create' do
@@ -12,7 +13,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     @post = posts(:two)
 
     assert_difference('PostLike.count', 1) do
-      post post_likes_path(@post), params: { user_id: @user.id }
+      post post_likes_path(@post, @locale), params: { user_id: @user.id }
     end
   end
 
@@ -22,7 +23,7 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     @like = post_likes(:one)
 
     assert_difference('PostLike.count', -1) do
-      delete post_like_path(@post, @like), params: { user_id: @user.id }
+      delete post_like_path(@post, @like, @locale), params: { user_id: @user.id }
     end
   end
 end
