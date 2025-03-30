@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
 
     if @post.save
-      redirect_to post_path(@post), notice: t('posts.created')
+      redirect_to post_path(@post.id, locale: I18n.locale), notice: t('posts.created')
     else
       render :new, status: :unprocessable_entity
     end
