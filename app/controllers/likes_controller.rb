@@ -5,9 +5,7 @@ class LikesController < ApplicationController
   before_action :set_post
 
   def create
-    unless @post.likes.exists?(user_id: current_user.id)
-      @post.likes.create(user_id: current_user.id)
-    end
+    @post.likes.find_or_create_by(user: current_user)
     redirect_to @post
   end
 
