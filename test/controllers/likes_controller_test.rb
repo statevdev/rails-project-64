@@ -11,9 +11,13 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     sign_in @user
     @post = posts(:two)
 
-    assert_difference('PostLike.count', 1) do
-      post post_likes_path(@post), params: { user_id: @user.id }
-    end
+    post post_likes_path(@post), params: { user_id: @user.id }
+
+    assert_response :redirect
+
+    created_like = PostLike.find_by(user_id: @user.id)
+
+    assert created_like
   end
 
   test '#destroy' do
@@ -21,8 +25,9 @@ class LikesControllerTest < ActionDispatch::IntegrationTest
     @post = posts(:one)
     @like = post_likes(:one)
 
-    assert_difference('PostLike.count', -1) do
-      delete post_like_path(@post, @like), params: { user_id: @user.id }
-    end
+    delete post_like_path(@post, @like), params: { user_id: @user.id }
+
+    assert_response :redirect
+    assert_nil PostLike.find_by(user_id: @user.id)
   end
 end

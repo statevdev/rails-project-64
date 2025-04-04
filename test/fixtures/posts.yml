@@ -1,12 +1,12 @@
 one:
   title: <%= Faker::Lorem.sentence %>
-  body: <%= Faker::Lorem.paragraphs %>
+  body: <%= Faker::Lorem.paragraphs(number: 5) %>
   category: one
   creator: user_one
 
 two:
   title: <%= Faker::Lorem.sentence %>
-  body: <%= Faker::Lorem.paragraphs %>
+  body: <%= Faker::Lorem.paragraphs(number: 5) %>
   category: two
   creator: user_two
 

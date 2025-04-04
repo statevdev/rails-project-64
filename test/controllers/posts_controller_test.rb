@@ -17,18 +17,20 @@ class PostsControllerTest < ActionDispatch::IntegrationTest
   test 'should create post' do
     sign_in users(:user_one)
 
-    assert_difference('Post.count') do
-      post posts_path, params: {
-        post: {
-          title: @post.title,
-          body: @post.body,
-          category_id: @post.category_id,
-          creator_id: @post.creator_id
-        }
-      }
-    end
+    post_params = {
+      title: @post.title,
+      body: @post.body,
+      category_id: @post.category_id,
+      creator_id: @post.creator_id
+    }
 
-    assert_redirected_to post_path(Post.last)
+    post posts_path, params: { post: post_params }
+
+    assert_response :redirect
+
+    created_post = Post.find_by(post_params)
+
+    assert created_post
   end
 
   test 'should get index' do

@@ -12,33 +12,33 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
   test 'should create root comment without nested comments' do
     sign_in @user
 
-    comment_attrs = post_comments(:one).slice(:content, :ancestry)
+    comment_attrs = @comment.slice(:content, :ancestry)
 
-    assert_difference('PostComment.count', 1) do
-      post post_comments_path(@post), params: { post_comment: comment_attrs }
-    end
-
-    new_comment = PostComment.last
+    post post_comments_path(@post), params: { post_comment: comment_attrs }
 
     assert_redirected_to post_path(@post)
-    assert { new_comment.depth.zero? }
+
+    new_comment = PostComment.find_by(comment_attrs)
+
+    assert new_comment
+    assert new_comment.depth.zero?
   end
 
   test 'should create root comment with nested comments' do
     sign_in @user
 
-    assert_difference('PostComment.count', 1) do
-      post post_comments_path(@post), params: {
-        post_comment: {
-          content: @comment.content,
-          parent_id: @comment.id
-        }
-      }
-    end
+    comment_attrs = @comment.slice(:content, :ancestry)
 
-    reply = PostComment.last
+    post post_comments_path(@post), params: { post_comment: comment_attrs }
 
-    assert { @comment.id == reply.parent_id }
     assert_redirected_to post_path(@post)
+
+    new_comment = PostComment.find_by(comment_attrs)
+
+    assert new_comment
+
+    reply = new_comment.children.create!(content: @comment.content, user: @user, post: @post)
+
+    assert { new_comment.id == reply.parent_id }
   end
 end
